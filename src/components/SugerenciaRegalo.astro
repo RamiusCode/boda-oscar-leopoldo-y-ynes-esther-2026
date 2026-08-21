@@ -1,0 +1,256 @@
+<section class="relative w-full py-16 sm:py-20 md:py-24 lg:py-32">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-center">
+            <div class="relative w-[300px]" id="card-regalos">
+                <div
+                    class="absolute z-20"
+                    style="top: -30px; left: 50%; transform: translateX(-50%);"
+                >
+                    <div class="w-16 h-16" id="boton-decorativo-regalos">
+                        <img
+                            src="/imagenes/boton.png"
+                            alt="Decoración"
+                            class="w-full h-full object-contain"
+                        />
+                    </div>
+                </div>
+
+                <img
+                    src="/imagenes/floradorno.png"
+                    alt=""
+                    class="absolute -top-7 left-0 w-36 pointer-events-none z-[25]"
+                    style="transform: translateX(-30%);"
+                    id="flor-regalos-izq"
+                />
+
+                <img
+                    src="/imagenes/floradorno.png"
+                    alt=""
+                    class="absolute -bottom-7 right-0 w-36 pointer-events-none z-[25]"
+                    style="transform: translateX(30%) rotate(180deg);"
+                    id="flor-regalos-der"
+                />
+
+                <div
+                    class="relative rounded-[40px] shadow-xl overflow-hidden"
+                    id="card-principal-regalos"
+                >
+                    <img
+                        src="/imagenes/azul.png"
+                        alt="Fondo mesa regalos"
+                        class="absolute inset-0 w-full h-full object-cover opacity-35"
+                    />
+
+                    <div
+                        class="relative px-4 py-12 z-10 flex flex-col items-center"
+                    >
+                        <div class="text-center mb-6" id="titulo-regalos">
+                            <h2
+                                class="font-great-vibes text-[2.25rem] leading-tight regalos-titulo"
+                            >
+                                Sugerencia de Regalos
+                            </h2>
+                        </div>
+
+                        <div class="text-center mb-8" id="texto-regalos">
+                            <p
+                                class="font-cormorant text-xl leading-relaxed regalos-texto"
+                            >
+                                Lo que más ilusión nos hace es verte ahí con
+                                nosotros. Si además quieres obsequiarnos algo,
+                                aquí te dejamos estas formas de hacerlo.
+                            </p>
+                        </div>
+
+                        <div class="mb-4 bg-white p-3 rounded-lg" id="qr-code">
+                            <img
+                                src="/imagenes/qr.png"
+                                alt="QR Mesa de Regalos"
+                                class="w-56 h-56 object-contain"
+                            />
+                        </div>
+
+                        <div id="numero-cuenta" class="text-center mb-6">
+                            <p
+                                class="font-cormorant text-lg font-semibold tracking-wide regalos-cuenta"
+                            >
+                                CTA: 3500466153
+                            </p>
+                        </div>
+
+                        <div
+                            id="lluvia-sobres"
+                            class="text-center border-t border-gray-300 pt-6 mt-2 w-full px-4"
+                        >
+                            <h3
+                                class="font-great-vibes text-[2.25rem] regalos-titulo mb-2"
+                            >
+                                Lluvia de Sobres
+                            </h3>
+                            <p
+                                class="font-cormorant text-xl leading-snug regalos-texto"
+                            >
+                                También contaremos con un buzón para sobres el
+                                día del evento.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        import { gsap } from "gsap";
+        import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+        gsap.registerPlugin(ScrollTrigger);
+
+        if (typeof window !== "undefined") {
+            document.addEventListener("DOMContentLoaded", () => {
+            // ═══ FLORES: cada una entra desde su lado, suave ═══
+            // xPercent y rotation van declarados en los dos estados porque
+            // GSAP reescribe el transform entero y si no, se pierden.
+            gsap.fromTo(
+                "#flor-regalos-izq",
+                { opacity: 0, xPercent: -30, x: -70 },
+                {
+                    opacity: 1,
+                    xPercent: -30,
+                    x: 0,
+                    duration: 1.8,
+                    ease: "sine.out",
+                    scrollTrigger: {
+                        trigger: "#card-regalos",
+                        start: "top 85%",
+                        toggleActions: "play none none reset",
+                    },
+                },
+            );
+
+            gsap.fromTo(
+                "#flor-regalos-der",
+                { opacity: 0, xPercent: 30, rotation: 180, x: 70 },
+                {
+                    opacity: 1,
+                    xPercent: 30,
+                    rotation: 180,
+                    x: 0,
+                    duration: 1.8,
+                    ease: "sine.out",
+                    delay: 0.25,
+                    scrollTrigger: {
+                        trigger: "#card-regalos",
+                        start: "top 85%",
+                        toggleActions: "play none none reset",
+                    },
+                },
+            );
+
+                const scrollConfig = {
+                    trigger: "#card-regalos",
+                    start: "top 80%",
+                    toggleActions: "play none none reset",
+                };
+
+                gsap.fromTo(
+                    "#boton-decorativo-regalos",
+                    { opacity: 0, scale: 0, rotation: -180 },
+                    {
+                        opacity: 1,
+                        scale: 1,
+                        rotation: 0,
+                        duration: 1,
+                        ease: "back.out(1.7)",
+                        scrollTrigger: scrollConfig,
+                    },
+                );
+                gsap.fromTo(
+                    "#card-principal-regalos",
+                    { opacity: 0, y: 50, scale: 0.95 },
+                    {
+                        opacity: 1,
+                        y: 0,
+                        scale: 1,
+                        duration: 1,
+                        ease: "power3.out",
+                        scrollTrigger: scrollConfig,
+                    },
+                );
+                gsap.fromTo(
+                    "#titulo-regalos",
+                    { opacity: 0, y: -20 },
+                    {
+                        opacity: 1,
+                        y: 0,
+                        duration: 0.8,
+                        ease: "power2.out",
+                        scrollTrigger: scrollConfig,
+                    },
+                );
+                gsap.fromTo(
+                    "#texto-regalos",
+                    { opacity: 0, y: 20 },
+                    {
+                        opacity: 1,
+                        y: 0,
+                        duration: 0.8,
+                        delay: 0.2,
+                        ease: "power2.out",
+                        scrollTrigger: scrollConfig,
+                    },
+                );
+                gsap.fromTo(
+                    "#qr-code",
+                    { opacity: 0, scale: 0.8 },
+                    {
+                        opacity: 1,
+                        scale: 1,
+                        duration: 0.8,
+                        delay: 0.4,
+                        ease: "back.out(1.7)",
+                        scrollTrigger: scrollConfig,
+                    },
+                );
+                gsap.fromTo(
+                    "#numero-cuenta",
+                    { opacity: 0, y: 20 },
+                    {
+                        opacity: 1,
+                        y: 0,
+                        duration: 0.8,
+                        delay: 0.6,
+                        ease: "power2.out",
+                        scrollTrigger: scrollConfig,
+                    },
+                );
+
+                // Animación para la nueva sección de sobres
+                gsap.fromTo(
+                    "#lluvia-sobres",
+                    { opacity: 0, y: 20 },
+                    {
+                        opacity: 1,
+                        y: 0,
+                        duration: 0.8,
+                        delay: 0.8,
+                        ease: "power2.out",
+                        scrollTrigger: scrollConfig,
+                    },
+                );
+            });
+        }
+    </script>
+</section>
+
+<style>
+    .regalos-titulo {
+        color: #A88C61;
+    }
+    .regalos-texto {
+        color: #B34155;
+    }
+    .regalos-cuenta {
+        color: #A88C61;
+    }
+</style>

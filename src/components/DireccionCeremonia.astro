@@ -1,0 +1,278 @@
+<!-- ═══════════════════════════════════════════════════════════ --><!-- ⛪ SECCIÓN: CEREMONIA                                       --><!-- ═══════════════════════════════════════════════════════════ -->
+<section class="relative w-full pt-4 pb-12 sm:py-20 md:py-24 lg:py-32">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-center">
+            <div
+                class="relative w-full max-w-md sm:max-w-lg md:max-w-xl"
+                id="card-ceremonia"
+            >
+                <!-- FLOR — esquina superior izquierda -->
+                <img
+                    src="/imagenes/floradorno.png"
+                    alt=""
+                    class="absolute -top-7 left-0 w-36 pointer-events-none z-[25]"
+                    style="transform: translateX(-30%);"
+                    id="flor-ceremonia-izq"
+                />
+
+                <!-- FLOR — esquina inferior derecha -->
+                <img
+                    src="/imagenes/floradorno.png"
+                    alt=""
+                    class="absolute -bottom-7 right-0 w-36 pointer-events-none z-[25]"
+                    style="transform: translateX(30%) rotate(180deg);"
+                    id="flor-ceremonia-der"
+                />
+
+                <!-- BOTÓN DECORATIVO SUPERIOR -->
+                <div
+                    class="absolute z-20"
+                    style="top: -30px; left: 50%; transform: translateX(-50%);"
+                >
+                    <div
+                        class="w-16 h-16 sm:w-20 sm:h-20"
+                        id="boton-decorativo-ceremonia"
+                    >
+                        <img
+                            src="/imagenes/boton.png"
+                            alt="Decoración"
+                            class="w-full h-full object-contain"
+                        />
+                    </div>
+                </div>
+
+                <div
+                    class="relative rounded-2xl shadow-xl overflow-hidden"
+                    style="background-color: #e8dcc8;"
+                >
+                    <img
+                        src="/imagenes/fondorojo.png"
+                        alt="Fondo ceremonia"
+                        class="absolute inset-0 w-full h-full object-cover opacity-90"
+                    />
+
+                    <div
+                        class="relative px-4 py-8 sm:px-8 sm:py-10 md:px-10 md:py-12 z-10"
+                    >
+                        <div class="mb-4">
+                            <h2
+                                class="font-great-vibes text-4xl sm:text-4xl md:text-5xl text-center"
+                                id="titulo-ceremonia"
+                            >
+                                Ceremonia Civil
+                            </h2>
+                            <div class="titulo-separador">
+                                <span class="titulo-linea"></span>
+                                <span class="titulo-y">y</span>
+                                <span class="titulo-linea"></span>
+                            </div>
+                            <h2
+                                class="font-great-vibes text-4xl sm:text-4xl md:text-5xl text-center"
+                                id="titulo-recepcion"
+                            >
+                                Recepción Social
+                            </h2>
+                        </div>
+
+                        <div class="flex items-center justify-between gap-4">
+                            <!-- ICONO IGLESIA -->
+                            <div class="flex-shrink-0 ml-4 sm:ml-6 md:ml-8">
+                                <div
+                                    class="w-24 h-24 sm:w-20 sm:h-20 md:w-24 md:h-24 icono-iglesia-color"
+                                >
+                                    <img
+                                        src="/imagenes/iglesia.png"
+                                        alt="Iglesia"
+                                        class="w-full h-full object-contain"
+                                        id="icono-iglesia"
+                                    />
+                                </div>
+                            </div>
+
+                            <!-- TEXTOS -->
+                            <div class="flex-1 text-center">
+                                <div class="mb-2">
+                                    <p
+                                        class="font-crimson text-xl sm:text-lg md:text-xl font-semibold"
+                                        id="nombre-parroquia"
+                                    >
+                                        Salón de Eventos<br />“Azuleno”
+                                    </p>
+                                    <p
+                                        class="font-crimson text-lg sm:text-base md:text-lg leading-tight mt-1"
+                                        id="direccion-salon"
+                                    >
+                                        Av. América y calle Manchaypoto
+                                    </p>
+                                </div>
+
+                                <div class="mb-4">
+                                    <p
+                                        class="font-crimson text-xl sm:text-base md:text-lg leading-tight font-semibold"
+                                        id="hora-ceremonia"
+                                    >
+                                        Hora: 16:00
+                                    </p>
+                                </div>
+
+                                <!-- BOTÓN VER UBICACIÓN -->
+                                <div class="mt-4">
+                                    <a
+                                        href="https://maps.app.goo.gl/pVknn9RmupGfYsQa6"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        class="inline-block px-4 py-2 sm:px-6 sm:py-2.5 border-2 rounded-full font-crimson text-base sm:text-sm uppercase tracking-wider transition-all duration-300 btn-ubicacion-ceremonia font-semibold"
+                                        id="btn-ubicacion"
+                                    >
+                                        VER UBICACIÓN
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    import { gsap } from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    if (typeof window !== "undefined") {
+        document.addEventListener("DOMContentLoaded", () => {
+            // ═══ FLOR IZQUIERDA: entra desde la izquierda ═══
+            gsap.fromTo(
+                "#flor-ceremonia-izq",
+                { opacity: 0, xPercent: -30, x: -70 },
+                {
+                    opacity: 1,
+                    xPercent: -30,
+                    x: 0,
+                    duration: 1.8,
+                    ease: "sine.out",
+                    scrollTrigger: {
+                        trigger: "#card-ceremonia",
+                        start: "top 85%",
+                        toggleActions: "play none none reset",
+                    },
+                },
+            );
+
+            // ═══ FLOR DERECHA: entra desde la derecha ═══
+            gsap.fromTo(
+                "#flor-ceremonia-der",
+                { opacity: 0, xPercent: 30, rotation: 180, x: 70 },
+                {
+                    opacity: 1,
+                    xPercent: 30,
+                    rotation: 180,
+                    x: 0,
+                    duration: 1.8,
+                    ease: "sine.out",
+                    delay: 0.25,
+                    scrollTrigger: {
+                        trigger: "#card-ceremonia",
+                        start: "top 85%",
+                        toggleActions: "play none none reset",
+                    },
+                },
+            );
+
+            gsap.fromTo(
+                "#boton-decorativo-ceremonia",
+                { opacity: 0, scale: 0, rotation: -180 },
+                {
+                    opacity: 1,
+                    scale: 1,
+                    rotation: 0,
+                    duration: 1,
+                    ease: "back.out(1.7)",
+                    scrollTrigger: {
+                        trigger: "#card-ceremonia",
+                        start: "top 85%",
+                        toggleActions: "play none none reset",
+                    },
+                },
+            );
+
+            gsap.fromTo(
+                "#card-ceremonia",
+                { opacity: 0, scale: 0.85, y: 60, rotationY: -15 },
+                {
+                    opacity: 1,
+                    scale: 1,
+                    y: 0,
+                    rotationY: 0,
+                    duration: 1.2,
+                    ease: "power3.out",
+                    scrollTrigger: {
+                        trigger: "#card-ceremonia",
+                        start: "top 80%",
+                        toggleActions: "play none none reset",
+                    },
+                },
+            );
+        });
+    }
+</script>
+
+<style>
+    #titulo-ceremonia {
+        color: #B34155;
+    }
+    #titulo-recepcion {
+        color: #B34155;
+    }
+    #nombre-parroquia {
+        color: #A88C61;
+    }
+    #hora-ceremonia {
+        color: #B34155;
+    }
+
+    .titulo-separador {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        margin: 4px auto 4px;
+        max-width: 180px;
+    }
+    .titulo-linea {
+        flex: 1;
+        height: 1px;
+        background: linear-gradient(
+            to right,
+            transparent,
+            rgba(168, 140, 97, 0.4),
+            transparent
+        );
+    }
+    .titulo-y {
+        font-family: "Great Vibes", cursive;
+        font-size: 26px;
+        line-height: 1;
+        color: #A88C61;
+        opacity: 0.85;
+        padding-bottom: 4px;
+    }
+
+    .icono-iglesia-color {
+        filter: brightness(0) saturate(100%) invert(77%) sepia(87%)
+            saturate(7500%) hue-rotate(30deg) brightness(103%) contrast(38%);
+    }
+
+    .btn-ubicacion-ceremonia {
+        color: #B34155;
+        border-color: #B34155;
+    }
+
+    #card-ceremonia > div {
+        transition: all 0.4s ease;
+        transform-style: preserve-3d;
+    }
+</style>

@@ -1,0 +1,471 @@
+---
+// src/components/Portada.astro
+// Diseño: fondo blanco puro · Colores reales · Solo animación de entrada simultánea (sin flotación)
+// Novios: Omar & Belén · 6 de junio de 2026
+---
+
+<slot />
+
+<!-- ══════════ PORTADA FIJA ══════════ -->
+<section
+    id="portada-section"
+    class="fixed inset-0 w-full h-screen flex justify-center z-[10000] overflow-hidden"
+    style="background-color:#FFFFFF;"
+>
+    <div id="portada-fondo" class="relative w-full max-w-[480px] h-full">
+        <!-- ── Flores esquina superior ── -->
+        <div class="absolute top-0 left-0 right-0 h-36 overflow-visible z-[8]">
+            <div id="flor-izq" class="absolute -top-2 -left-2 w-36 h-36">
+                <img
+                    src="/imagenes/floriz.webp"
+                    alt=""
+                    class="w-full h-full object-contain"
+                />
+            </div>
+            <div id="flor-der" class="absolute -top-2 -right-2 w-36 h-36">
+                <img
+                    src="/imagenes/florde.webp"
+                    alt=""
+                    class="w-full h-full object-contain"
+                />
+            </div>
+        </div>
+
+        <!-- ── Flores laterales medias ── -->
+        <img
+            id="flor-lat-izq"
+            src="/imagenes/florlateral.png"
+            alt=""
+            class="absolute left-0 top-[34%] w-20 h-auto md:w-28 pointer-events-none z-[6]"
+        />
+        <img
+            id="flor-lat-der"
+            src="/imagenes/florlateral.png"
+            alt=""
+            class="absolute right-0 top-[34%] w-20 h-auto md:w-28 pointer-events-none z-[6] scale-x-[-1]"
+        />
+
+        <!-- ── Contenido central ── -->
+        <div class="relative z-10 pt-28 pb-2 px-6 flex flex-col items-center">
+            <p
+                id="tagline"
+                class="text-[10px] tracking-[0.45em] uppercase font-medium mb-3 text-center"
+                style="color:#A9607A; font-family:'Cormorant Garamond',serif;"
+            >
+                Una historia de amor
+            </p>
+
+            <h1
+                id="titulo"
+                class="text-xl text-center mb-4 tracking-[0.28em] font-semibold uppercase"
+                style="font-family:'Cormorant Garamond',serif; color:#8E4257;"
+            >
+                ¡Nos Casamos!
+            </h1>
+
+            <div
+                id="nombre-omar"
+                class="text-[56px] leading-tight text-center mb-1"
+                style="font-family:'Great Vibes',cursive; color:#7E3346;"
+            >
+                Omar
+            </div>
+
+            <div class="flex items-center justify-center gap-4 py-1 w-full">
+                <div
+                    id="linea-izq"
+                    class="h-px flex-1 max-w-[80px]"
+                    style="background:linear-gradient(to right,transparent,#B96C7E);"
+                >
+                </div>
+                <span
+                    id="ampersand"
+                    class="text-3xl"
+                    style="font-family:'Great Vibes',cursive; color:#B96C7E;"
+                    >&</span
+                >
+                <div
+                    id="linea-der"
+                    class="h-px flex-1 max-w-[80px]"
+                    style="background:linear-gradient(to left,transparent,#B96C7E);"
+                >
+                </div>
+            </div>
+
+            <div
+                id="nombre-belen"
+                class="text-[56px] leading-tight text-center mt-1 mb-5"
+                style="font-family:'Great Vibes',cursive; color:#7E3346;"
+            >
+                Belén
+            </div>
+
+            <div
+                id="fecha"
+                class="text-center mb-4"
+                style="font-family:'Cormorant Garamond',serif; color:#96455B;"
+            >
+                <p class="text-xl tracking-widest font-medium">
+                    Sábado · 6 de junio
+                </p>
+            </div>
+
+            <!-- <div id="pase" class="flex justify-center mb-5 w-full">
+                <div class="pase-ticket">
+                    <span class="pase-linea"></span>
+                    <span class="pase-texto">✦ Pase para 2 personas ✦</span>
+                    <span class="pase-linea"></span>
+                </div>
+            </div> -->
+
+            <div
+                id="sobre-btn"
+                class="flex justify-center mb-4 cursor-pointer select-none"
+            >
+                <div class="sobre-wrap">
+                    <div class="sobre-glow"></div>
+                    <img
+                        src="/imagenes/sobre.png"
+                        alt="Abrir invitación"
+                        class="w-[260px] relative z-[2]"
+                        style="filter:drop-shadow(0 10px 26px rgba(140,60,85,0.30));"
+                    />
+                    <div class="sobre-etiqueta">
+                        <svg
+                            width="11"
+                            height="11"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2.2"
+                        >
+                            <path d="M21.5 2L12 13.5 2.5 2"></path>
+                            <path d="M2 2h20v16a2 2 0 01-2 2H4a2 2 0 01-2-2V2z"
+                            ></path>
+                        </svg>
+                        <span>Tu invitación</span>
+                    </div>
+                </div>
+            </div>
+
+            <p
+                id="instruccion"
+                class="text-center text-xs uppercase font-semibold tracking-[0.22em] px-4 pulso"
+                style="font-family:'Cormorant Garamond',serif; color:#8E4257;"
+            >
+                Toca el sobre para abrir la invitación
+            </p>
+
+            <div id="dots" class="flex justify-center gap-2 mt-3">
+                <span class="dot" style="background:#A9607A;"></span>
+                <span
+                    class="dot"
+                    style="background:#c3d9e8;width:6px;height:6px;"></span>
+                <span class="dot" style="background:#C98BA0;"></span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    @import url("https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap");
+
+    body {
+        overflow: hidden;
+    }
+
+    .pase-ticket {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        border: 1px dashed rgba(135, 193, 214, 0.5);
+        border-radius: 6px;
+        padding: 7px 18px;
+        background: rgba(255, 255, 255, 0.85);
+    }
+    .pase-texto {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 11px;
+        letter-spacing: 0.3em;
+        font-weight: 600;
+        color: #7ab3cc;
+        text-transform: uppercase;
+        white-space: nowrap;
+    }
+    .pase-linea {
+        flex: 1;
+        height: 1px;
+        min-width: 20px;
+        background: linear-gradient(
+            to right,
+            transparent,
+            rgba(169, 96, 122, 0.45),
+            transparent
+        );
+    }
+
+    .sobre-wrap {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+    }
+    .sobre-glow {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 290px;
+        height: 130px;
+        border-radius: 50%;
+        background: radial-gradient(
+            ellipse,
+            rgba(255, 255, 255, 0.55) 0%,
+            transparent 70%
+        );
+        z-index: 1;
+        pointer-events: none;
+    }
+    .sobre-etiqueta {
+        position: absolute;
+        bottom: -14px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(255, 255, 255, 0.95);
+        border: 1px solid rgba(135, 193, 214, 0.55);
+        border-radius: 20px;
+        padding: 4px 14px;
+        font-family: "Cormorant Garamond", serif;
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.15em;
+        color: #5b9ab5;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        white-space: nowrap;
+        z-index: 10;
+        box-shadow: 0 2px 10px rgba(140, 60, 85, 0.18);
+    }
+
+    .dot {
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        opacity: 0.6;
+    }
+
+    @keyframes pulso {
+        0%,
+        100% {
+            opacity: 0.65;
+        }
+        50% {
+            opacity: 1;
+        }
+    }
+    .pulso {
+        animation: pulso 2.5s ease-in-out infinite;
+    }
+</style>
+
+<script>
+    import { gsap } from "gsap";
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const TODOS = [
+            "#flor-izq",
+            "#flor-der",
+            "#flor-lat-izq",
+            "#flor-lat-der",
+            "#tagline",
+            "#titulo",
+            "#nombre-omar",
+            "#nombre-belen",
+            "#linea-izq",
+            "#linea-der",
+            "#ampersand",
+            "#fecha",
+            "#pase",
+            "#sobre-btn",
+            "#instruccion",
+            "#dots",
+        ];
+
+        // ── Estado inicial: todo invisible ───────────────────────
+        gsap.set(TODOS, { opacity: 0 });
+
+        // Posiciones de origen (cada elemento viene de su dirección natural)
+        gsap.set("#flor-izq", { x: -40, y: -20 });
+        gsap.set("#flor-der", { x: 40, y: -20 });
+        gsap.set("#flor-lat-izq", { x: -30 });
+        gsap.set("#flor-lat-der", { x: 30 });
+        gsap.set("#tagline", { y: -12 });
+        gsap.set("#titulo", { y: -16 });
+        gsap.set("#nombre-omar", { x: -30 });
+        gsap.set("#nombre-belen", { x: 30 });
+        gsap.set("#linea-izq", { scaleX: 0, transformOrigin: "right" });
+        gsap.set("#linea-der", { scaleX: 0, transformOrigin: "left" });
+        gsap.set("#ampersand", { scale: 0, rotation: -180 });
+        gsap.set("#fecha", { y: 18 });
+        gsap.set("#pase", { y: 12 });
+        gsap.set("#sobre-btn", { y: 24 });
+        gsap.set("#instruccion", { y: 10 });
+        gsap.set("#dots", { y: 8 });
+
+        // ── Entrada SIMULTÁNEA: todos en t=0 ────────────────────
+        const tl = gsap.timeline({ delay: 0.3 });
+        const E = "power2.out";
+        const D = 1.0;
+
+        tl
+            // Flores decorativas
+            .to(
+                "#flor-izq",
+                { opacity: 1, x: 0, y: 0, duration: D, ease: E },
+                0,
+            )
+            .to(
+                "#flor-der",
+                { opacity: 1, x: 0, y: 0, duration: D, ease: E },
+                0,
+            )
+            .to("#flor-lat-izq", { opacity: 1, x: 0, duration: D, ease: E }, 0)
+            .to("#flor-lat-der", { opacity: 1, x: 0, duration: D, ease: E }, 0)
+            // Textos y separadores
+            .to("#tagline", { opacity: 1, y: 0, duration: D, ease: E }, 0)
+            .to("#titulo", { opacity: 1, y: 0, duration: D, ease: E }, 0)
+            .to("#nombre-omar", { opacity: 1, x: 0, duration: D, ease: E }, 0)
+            .to("#nombre-belen", { opacity: 1, x: 0, duration: D, ease: E }, 0)
+            .to(
+                "#linea-izq",
+                { opacity: 1, scaleX: 1, duration: D, ease: E },
+                0,
+            )
+            .to(
+                "#linea-der",
+                { opacity: 1, scaleX: 1, duration: D, ease: E },
+                0,
+            )
+            .to(
+                "#ampersand",
+                {
+                    opacity: 1,
+                    scale: 1,
+                    rotation: 0,
+                    duration: D,
+                    ease: "back.out(1.5)",
+                },
+                0,
+            )
+            // Elementos inferiores
+            .to("#fecha", { opacity: 1, y: 0, duration: D, ease: E }, 0)
+            .to("#pase", { opacity: 1, y: 0, duration: D, ease: E }, 0)
+            .to("#sobre-btn", { opacity: 1, y: 0, duration: D, ease: E }, 0)
+            .to("#instruccion", { opacity: 1, y: 0, duration: D, ease: E }, 0)
+            .to("#dots", { opacity: 1, y: 0, duration: D, ease: E }, 0);
+
+        // ── Sin flotación posterior — elementos quedan estáticos ──
+
+        // ── Hover sobre ──────────────────────────────────────────
+        const sobreBtn = document.getElementById("sobre-btn");
+        sobreBtn?.addEventListener("mouseenter", () =>
+            gsap.to("#sobre-btn", {
+                y: -8,
+                scale: 1.04,
+                duration: 0.25,
+                ease: "power2.out",
+            }),
+        );
+        sobreBtn?.addEventListener("mouseleave", () =>
+            gsap.to("#sobre-btn", {
+                y: 0,
+                scale: 1,
+                duration: 0.25,
+                ease: "power2.out",
+            }),
+        );
+
+        // ── CLICK EN EL SOBRE ────────────────────────────────────
+        sobreBtn?.addEventListener("click", () => {
+            const audio = new Audio("/musica/melodia.mp3");
+            audio.loop = true;
+            audio.volume = 0.5;
+            audio.play().catch((err: any) => console.warn("Audio:", err));
+            (window as any).audioGlobal = audio;
+            (window as any).estaReproduciendoGlobal = true;
+
+            setTimeout(() => {
+                document.getElementById("icono-play")?.classList.add("hidden");
+                document
+                    .getElementById("icono-pause")
+                    ?.classList.remove("hidden");
+            }, 100);
+
+            gsap.killTweensOf(TODOS);
+
+            const portada = document.getElementById("portada-section");
+
+            gsap.timeline()
+                .to("#sobre-btn", {
+                    scale: 1.1,
+                    duration: 0.15,
+                    ease: "power2.in",
+                })
+                .to(
+                    [
+                        "#instruccion",
+                        "#dots",
+                        "#pase",
+                        "#fecha",
+                        "#nombre-belen",
+                        "#nombre-omar",
+                        "#ampersand",
+                        "#linea-izq",
+                        "#linea-der",
+                        "#titulo",
+                        "#tagline",
+                        "#flor-izq",
+                        "#flor-der",
+                        "#flor-lat-izq",
+                        "#flor-lat-der",
+                    ],
+                    {
+                        opacity: 0,
+                        y: -14,
+                        duration: 0.28,
+                        stagger: 0.015,
+                        ease: "power2.in",
+                    },
+                    0.08,
+                )
+                .to(
+                    "#sobre-btn",
+                    {
+                        opacity: 0,
+                        scale: 1.25,
+                        duration: 0.28,
+                        ease: "power2.in",
+                    },
+                    0.18,
+                )
+                .to(
+                    portada,
+                    {
+                        opacity: 0,
+                        duration: 0.75,
+                        ease: "power2.out",
+                        onStart() {
+                            document.body.style.overflow = "auto";
+                        },
+                        onComplete() {
+                            portada?.remove();
+                            window.scrollTo({ top: 0, behavior: "smooth" });
+                        },
+                    },
+                    0.38,
+                );
+        });
+    });
+</script>

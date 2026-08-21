@@ -1,0 +1,125 @@
+<!-- ═══════════════════════════════════════════════════════════ --><!-- 📖 SECCIÓN: VERSÍCULO                                       --><!-- ═══════════════════════════════════════════════════════════ -->
+<section class="relative w-full py-6 sm:py-10 md:py-12 lg:py-16">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-center">
+            <div class="relative w-full max-w-[320px]" id="card-versiculo">
+                <!-- Texto libre, sin card -->
+                <div class="relative" id="card-principal-versiculo">
+                    <div
+                        class="relative px-2 py-0 z-10 flex flex-col items-center justify-center"
+                    >
+                        <!-- Ornamento superior -->
+                        <div class="flex items-center gap-3 mb-6 w-full">
+                            <div
+                                class="h-px flex-1 bg-gradient-to-r from-transparent to-[#A88C61]/45"
+                            >
+                            </div>
+                            <span class="text-[#A88C61] text-sm opacity-70"
+                                >✦</span
+                            >
+                            <div
+                                class="h-px flex-1 bg-gradient-to-l from-transparent to-[#A88C61]/45"
+                            >
+                            </div>
+                        </div>
+
+                        <!-- Texto del versículo -->
+                        <p
+                            id="texto-versiculo"
+                            class="font-crimson text-xl text-center leading-relaxed text-[#B34155] mb-6"
+                        >
+                            El amor nunca se da por vencido, jamás pierde la fe,
+                            siempre tiene esperanzas y se mantiene firme en toda
+                            circunstancia.
+                        </p>
+
+                        <!-- Cita bíblica -->
+                        <p
+                            id="cita-versiculo"
+                            class="font-crimson text-sm sm:text-base text-center uppercase tracking-[0.2em] font-semibold text-[#A88C61]"
+                        >
+                            1 Corintios 13:7
+                        </p>
+
+                        <!-- Ornamento inferior -->
+                        <div class="flex items-center gap-3 mt-6 w-full">
+                            <div
+                                class="h-px flex-1 bg-gradient-to-r from-transparent to-[#A88C61]/45"
+                            >
+                            </div>
+                            <span class="text-[#A88C61] text-sm opacity-70"
+                                >✦</span
+                            >
+                            <div
+                                class="h-px flex-1 bg-gradient-to-l from-transparent to-[#A88C61]/45"
+                            >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    import { gsap } from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    if (typeof window !== "undefined") {
+        document.addEventListener("DOMContentLoaded", () => {
+            gsap.fromTo(
+                "#card-principal-versiculo",
+                { opacity: 0, y: 50, scale: 0.95 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    scale: 1,
+                    duration: 1,
+                    ease: "power3.out",
+                    scrollTrigger: {
+                        trigger: "#card-versiculo",
+                        start: "top 80%",
+                        toggleActions: "play none none reset",
+                    },
+                },
+            );
+
+            gsap.fromTo(
+                "#texto-versiculo",
+                { opacity: 0, y: 20 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.9,
+                    delay: 0.3,
+                    ease: "power2.out",
+                    scrollTrigger: {
+                        trigger: "#card-versiculo",
+                        start: "top 80%",
+                        toggleActions: "play none none reset",
+                    },
+                },
+            );
+
+            gsap.fromTo(
+                "#cita-versiculo",
+                { opacity: 0, y: 10 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.7,
+                    delay: 0.6,
+                    ease: "power2.out",
+                    scrollTrigger: {
+                        trigger: "#card-versiculo",
+                        start: "top 80%",
+                        toggleActions: "play none none reset",
+                    },
+                },
+            );
+        });
+    }
+</script>

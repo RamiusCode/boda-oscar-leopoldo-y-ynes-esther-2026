@@ -1,0 +1,312 @@
+<!-- ═══════════════════════════════════════════════════════════ --><!-- 📅 SECCIÓN: ITINERARIO                                      --><!-- ═══════════════════════════════════════════════════════════ -->
+<section class="relative w-full py-16 sm:py-20 md:py-24 lg:py-32">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-center">
+            <div class="relative w-[280px]" id="card-itinerario">
+                <!-- BOTÓN DECORATIVO SUPERIOR -->
+                <div
+                    class="absolute z-20"
+                    style="top: -30px; left: 50%; transform: translateX(-50%);"
+                >
+                    <div class="w-16 h-16" id="boton-decorativo-itinerario">
+                        <img
+                            src="/imagenes/boton.png"
+                            alt="Decoración"
+                            class="w-full h-full object-contain"
+                        />
+                    </div>
+                </div>
+
+                <!-- FLOR — esquina superior izquierda -->
+                <img
+                    src="/imagenes/floradorno.png"
+                    alt=""
+                    class="absolute -top-7 left-0 w-36 pointer-events-none z-[25]"
+                    style="transform: translateX(-30%);"
+                    id="flor-itinerario-izq"
+                />
+
+                <!-- FLOR — esquina inferior derecha -->
+                <img
+                    src="/imagenes/floradorno.png"
+                    alt=""
+                    class="absolute -bottom-7 right-0 w-36 pointer-events-none z-[25]"
+                    style="transform: translateX(30%) rotate(180deg);"
+                    id="flor-itinerario-der"
+                />
+
+                <!-- CARD PRINCIPAL -->
+                <div
+                    class="relative rounded-[40px] shadow-xl overflow-hidden"
+                    id="card-principal-itinerario"
+                >
+                    <img
+                        src="/imagenes/fondoplomos.png"
+                        alt="Fondo itinerario"
+                        class="absolute inset-0 w-full h-full object-cover"
+                    />
+
+                    <div class="relative px-6 py-10 z-10">
+                        <!-- TÍTULO -->
+                        <div class="text-center mb-8">
+                            <h2
+                                class="font-great-vibes text-[2.5rem] leading-tight text-center"
+                                id="titulo-itinerario"
+                            >
+                                Itinerario
+                            </h2>
+                        </div>
+
+                        <!-- EVENTO 1 -->
+                        <div class="flex items-start gap-4 mb-5" id="evento-1">
+                            <div class="w-12 flex-shrink-0 mt-1">
+                                <img
+                                    src="/imagenes/anillo.png"
+                                    alt="Ceremonia Civil"
+                                    class="w-full h-auto object-contain icono-itinerario"
+                                />
+                            </div>
+                            <div class="flex-1 text-center">
+                                <h3
+                                    class="font-great-vibes text-[1.75rem] leading-none mb-1 titulo-evento"
+                                >
+                                    Ceremonia Civil
+                                </h3>
+                                <p class="font-crimson text-base hora-evento">
+                                    16:00
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- EVENTO 2 -->
+                        <div class="flex items-start gap-4 mb-5" id="evento-2">
+                            <div class="w-12 flex-shrink-0 mt-1">
+                                <img
+                                    src="/imagenes/religiosa.png"
+                                    alt="Bendición Religiosa"
+                                    class="w-full h-auto object-contain icono-itinerario"
+                                />
+                            </div>
+                            <div class="flex-1 text-center">
+                                <h3
+                                    class="font-great-vibes text-[1.75rem] leading-none mb-1 titulo-evento"
+                                >
+                                    Bendición Religiosa
+                                </h3>
+                                <p class="font-crimson text-base hora-evento">
+                                    17:30
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- EVENTO 3 -->
+                        <div class="flex items-start gap-4 mb-5" id="evento-3">
+                            <div class="w-12 flex-shrink-0 mt-1">
+                                <img
+                                    src="/imagenes/brindis.png"
+                                    alt="Brindis"
+                                    class="w-full h-auto object-contain icono-itinerario"
+                                />
+                            </div>
+                            <div class="flex-1 text-center">
+                                <h3
+                                    class="font-great-vibes text-[1.75rem] leading-none mb-1 titulo-evento"
+                                >
+                                    Brindis
+                                </h3>
+                                <p class="font-crimson text-base hora-evento">
+                                    18:00
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- EVENTO 4 -->
+                        <div class="flex items-start gap-4 mb-5" id="evento-4">
+                            <div class="w-12 flex-shrink-0 mt-1">
+                                <img
+                                    src="/imagenes/cena.png"
+                                    alt="Cena"
+                                    class="w-full h-auto object-contain icono-itinerario"
+                                />
+                            </div>
+                            <div class="flex-1 text-center">
+                                <h3
+                                    class="font-great-vibes text-[1.75rem] leading-none mb-1 titulo-evento"
+                                >
+                                    Cena
+                                </h3>
+                                <p class="font-crimson text-base hora-evento">
+                                    19:30
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- EVENTO 5 -->
+                        <div class="flex items-start gap-4" id="evento-5">
+                            <div class="w-12 flex-shrink-0 mt-1">
+                                <img
+                                    src="/imagenes/musica.png"
+                                    alt="Fiesta Bailable"
+                                    class="w-full h-auto object-contain icono-itinerario"
+                                />
+                            </div>
+                            <div class="flex-1 text-center">
+                                <h3
+                                    class="font-great-vibes text-[1.75rem] leading-none mb-1 titulo-evento"
+                                >
+                                    Fiesta Bailable
+                                </h3>
+                                <p class="font-crimson text-base hora-evento">
+                                    20:30
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    #titulo-itinerario {
+        color: #B34155;
+    }
+    .titulo-evento {
+        color: #A88C61;
+    }
+    .hora-evento {
+        color: #B34155;
+    }
+
+    .icono-itinerario {
+        filter: brightness(0) saturate(100%) invert(30%) sepia(94%)
+            saturate(7500%) hue-rotate(342deg) brightness(87%) contrast(54%);
+    }
+</style>
+
+<script>
+    import { gsap } from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    if (typeof window !== "undefined") {
+        document.addEventListener("DOMContentLoaded", () => {
+            // ═══ FLORES: cada una entra desde su lado, suave ═══
+            // xPercent y rotation van declarados en los dos estados porque
+            // GSAP reescribe el transform entero y si no, se pierden.
+            gsap.fromTo(
+                "#flor-itinerario-izq",
+                { opacity: 0, xPercent: -30, x: -70 },
+                {
+                    opacity: 1,
+                    xPercent: -30,
+                    x: 0,
+                    duration: 1.8,
+                    ease: "sine.out",
+                    scrollTrigger: {
+                        trigger: "#card-itinerario",
+                        start: "top 85%",
+                        toggleActions: "play none none reset",
+                    },
+                },
+            );
+
+            gsap.fromTo(
+                "#flor-itinerario-der",
+                { opacity: 0, xPercent: 30, rotation: 180, x: 70 },
+                {
+                    opacity: 1,
+                    xPercent: 30,
+                    rotation: 180,
+                    x: 0,
+                    duration: 1.8,
+                    ease: "sine.out",
+                    delay: 0.25,
+                    scrollTrigger: {
+                        trigger: "#card-itinerario",
+                        start: "top 85%",
+                        toggleActions: "play none none reset",
+                    },
+                },
+            );
+
+            gsap.fromTo(
+                "#boton-decorativo-itinerario",
+                { opacity: 0, scale: 0, rotation: -180 },
+                {
+                    opacity: 1,
+                    scale: 1,
+                    rotation: 0,
+                    duration: 1,
+                    ease: "back.out(1.7)",
+                    scrollTrigger: {
+                        trigger: "#card-itinerario",
+                        start: "top 80%",
+                        toggleActions: "play none none reset",
+                    },
+                },
+            );
+
+            gsap.fromTo(
+                "#card-principal-itinerario",
+                { opacity: 0, y: 50, scale: 0.95 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    scale: 1,
+                    duration: 1,
+                    ease: "power3.out",
+                    scrollTrigger: {
+                        trigger: "#card-itinerario",
+                        start: "top 80%",
+                        toggleActions: "play none none reset",
+                    },
+                },
+            );
+
+            gsap.fromTo(
+                "#titulo-itinerario",
+                { opacity: 0, y: -20 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.8,
+                    ease: "power2.out",
+                    scrollTrigger: {
+                        trigger: "#card-itinerario",
+                        start: "top 80%",
+                        toggleActions: "play none none reset",
+                    },
+                },
+            );
+
+            [
+                "#evento-1",
+                "#evento-2",
+                "#evento-3",
+                "#evento-4",
+                "#evento-5",
+            ].forEach((evento, index) => {
+                gsap.fromTo(
+                    evento,
+                    { opacity: 0, x: -30 },
+                    {
+                        opacity: 1,
+                        x: 0,
+                        duration: 0.6,
+                        ease: "power2.out",
+                        delay: index * 0.1,
+                        scrollTrigger: {
+                            trigger: "#card-itinerario",
+                            start: "top 80%",
+                            toggleActions: "play none none reset",
+                        },
+                    },
+                );
+            });
+        });
+    }
+</script>

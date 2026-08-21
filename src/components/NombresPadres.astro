@@ -1,0 +1,267 @@
+<!-- ═══════════════════════════════════════════════════════════ --><!-- 👨‍👩‍👧‍👦 SECCIÓN: NUESTROS PADRES                                --><!-- ═══════════════════════════════════════════════════════════ -->
+<section class="relative w-full pt-20 pb-12 sm:py-20 md:py-24 lg:py-32">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-center">
+            <div class="relative w-[280px]" id="card-padres">
+                <!-- BOTÓN DECORATIVO SUPERIOR -->
+                <div
+                    class="absolute z-20"
+                    style="top: -30px; left: 50%; transform: translateX(-50%);"
+                >
+                    <div class="w-16 h-16" id="boton-decorativo">
+                        <img
+                            src="/imagenes/boton.png"
+                            alt="Decoración"
+                            class="w-full h-full object-contain"
+                        />
+                    </div>
+                </div>
+
+                <!-- FLOR — esquina superior izquierda -->
+                <img
+                    src="/imagenes/floradorno.png"
+                    alt=""
+                    class="absolute -top-7 left-0 w-36 pointer-events-none z-[25]"
+                    style="transform: translateX(-30%);"
+                    id="flor-padres-izq"
+                />
+
+                <!-- FLOR — esquina inferior derecha -->
+                <img
+                    src="/imagenes/floradorno.png"
+                    alt=""
+                    class="absolute -bottom-7 right-0 w-36 pointer-events-none z-[25]"
+                    style="transform: translateX(30%) rotate(180deg);"
+                    id="flor-padres-der"
+                />
+
+                <!-- CARD PRINCIPAL -->
+                <div
+                    class="relative rounded-lg shadow-xl overflow-hidden"
+                    id="card-principal"
+                >
+                    <img
+                        src="/imagenes/fondoplomos.png"
+                        alt=""
+                        class="absolute inset-0 w-full h-full object-cover"
+                    />
+
+                    <div class="relative px-6 py-10 z-10">
+                        <!-- TÍTULO -->
+                        <div class="text-center mb-6">
+                            <h2
+                                class="font-great-vibes text-4xl leading-tight text-center"
+                                id="titulo-padres"
+                            >
+                                Nuestros Padres
+                            </h2>
+                        </div>
+
+                        <!-- PADRES DEL NOVIO -->
+                        <div class="text-center mb-4" id="seccion-novia">
+                            <h3
+                                class="font-crimson text-xl uppercase tracking-wider font-semibold mb-2 subtitulo"
+                            >
+                                Padres del Novio
+                            </h3>
+                            <p
+                                class="font-crimson text-xl leading-relaxed nombres-azul"
+                            >
+                                Oscar Acuña Castro<br />
+                                Sonia Ayde Yapari Lima
+                            </p>
+                        </div>
+
+                        <!-- SEPARADOR -->
+                        <div class="ornamento mb-4">
+                            <span class="orn-linea"></span>
+                            <span class="orn-rombo">✦</span>
+                            <span class="orn-linea"></span>
+                        </div>
+
+                        <!-- PADRES DE LA NOVIA -->
+                        <div class="text-center mb-4" id="seccion-novio">
+                            <h3
+                                class="font-crimson text-xl uppercase tracking-wider font-semibold mb-2 subtitulo"
+                            >
+                                Padres de la Novia
+                            </h3>
+                            <p
+                                class="font-crimson text-xl leading-relaxed nombres-azul"
+                            >
+                                Tifón Alex Bustamante Iriarte †<br />
+                                Esther Butrón Villarpando †
+                            </p>
+                        </div>
+
+                        <!-- SEPARADOR -->
+                        <div class="ornamento mb-4">
+                            <span class="orn-linea"></span>
+                            <span class="orn-rombo">✦</span>
+                            <span class="orn-linea"></span>
+                        </div>
+
+                        <!-- PADRINOS (comentado) -->
+                        <!-- <div class="text-center" id="seccion-padrinos">
+                            <h3 class="font-crimson text-xl uppercase tracking-wider font-semibold mb-2 subtitulo">
+                                Padrinos
+                            </h3>
+                            <p class="font-crimson text-xl leading-relaxed nombres-azul">
+                                Francis Lyons<br />
+                                Shawnee Lyons
+                            </p>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    import { gsap } from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    if (typeof window !== "undefined") {
+        document.addEventListener("DOMContentLoaded", () => {
+            // ═══ FLORES: cada una entra desde su lado, suave ═══
+            // xPercent y rotation van declarados en los dos estados porque
+            // GSAP reescribe el transform entero y si no, se pierden.
+            gsap.fromTo(
+                "#flor-padres-izq",
+                { opacity: 0, xPercent: -30, x: -70 },
+                {
+                    opacity: 1,
+                    xPercent: -30,
+                    x: 0,
+                    duration: 1.8,
+                    ease: "sine.out",
+                    scrollTrigger: {
+                        trigger: "#card-padres",
+                        start: "top 85%",
+                        toggleActions: "play none none reset",
+                    },
+                },
+            );
+
+            gsap.fromTo(
+                "#flor-padres-der",
+                { opacity: 0, xPercent: 30, rotation: 180, x: 70 },
+                {
+                    opacity: 1,
+                    xPercent: 30,
+                    rotation: 180,
+                    x: 0,
+                    duration: 1.8,
+                    ease: "sine.out",
+                    delay: 0.25,
+                    scrollTrigger: {
+                        trigger: "#card-padres",
+                        start: "top 85%",
+                        toggleActions: "play none none reset",
+                    },
+                },
+            );
+
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: "#card-padres",
+                    start: "top 80%",
+                    toggleActions: "play none none reset",
+                },
+            });
+
+            tl.fromTo(
+                "#boton-decorativo",
+                { opacity: 0, scale: 0, rotation: -180 },
+                {
+                    opacity: 1,
+                    scale: 1,
+                    rotation: 0,
+                    duration: 1,
+                    ease: "back.out(1.7)",
+                },
+                0,
+            )
+                .fromTo(
+                    "#card-principal",
+                    { opacity: 0, y: 50, scale: 0.95 },
+                    {
+                        opacity: 1,
+                        y: 0,
+                        scale: 1,
+                        duration: 1,
+                        ease: "power3.out",
+                    },
+                    0,
+                )
+                .fromTo(
+                    "#titulo-padres",
+                    { opacity: 0, y: -20 },
+                    { opacity: 1, y: 0, duration: 1, ease: "power2.out" },
+                    0,
+                )
+                .fromTo(
+                    "#seccion-novia",
+                    { opacity: 0, x: -25 },
+                    { opacity: 1, x: 0, duration: 0.9, ease: "power2.out" },
+                    0.15,
+                )
+                .fromTo(
+                    "#seccion-novio",
+                    { opacity: 0, x: 25 },
+                    { opacity: 1, x: 0, duration: 0.9, ease: "power2.out" },
+                    0.25,
+                )
+                .fromTo(
+                    "#seccion-padrinos",
+                    { opacity: 0, y: 20 },
+                    { opacity: 1, y: 0, duration: 0.9, ease: "power2.out" },
+                    0.35,
+                );
+        });
+    }
+</script>
+
+<style>
+    #titulo-padres {
+        color: #A88C61;
+    }
+    .subtitulo {
+        color: #A88C61;
+    }
+    .nombres-azul {
+        color: #B34155;
+    }
+
+    .ornamento {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        max-width: 140px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .orn-linea {
+        flex: 1;
+        height: 1px;
+        background: linear-gradient(
+            to right,
+            transparent,
+            rgba(168, 140, 97, 0.35),
+            transparent
+        );
+    }
+    .orn-rombo {
+        font-size: 10px;
+        color: #A88C61;
+        opacity: 0.55;
+    }
+
+    #card-principal {
+        transition: all 0.4s ease;
+        transform-style: preserve-3d;
+    }
+</style>
