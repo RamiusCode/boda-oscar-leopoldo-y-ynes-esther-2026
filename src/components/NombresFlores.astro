@@ -4,13 +4,13 @@
 
 <!-- ═══════════════════════════════════════════════════════════ --><!-- 💌 SECCIÓN: SOBRE CON FOTO + TARJETAS                       --><!-- ═══════════════════════════════════════════════════════════ -->
 <!-- El padding de arriba debe superar lo que asoma la foto por encima del sobre
-     (FOTO_ARRIBA = -13% de su altura ≈ 31px en celular), o la foto toca el borde. -->
+     (ver FOTO_ARRIBA en el script), o la foto toca el borde. -->
 <section class="relative w-full pt-14 pb-4 sm:pt-16 sm:pb-10 md:pt-20 md:pb-12 lg:pt-24 lg:pb-16">
     <!-- ── Flores laterales del componente (discretas) ── -->
     <img
         src="/imagenes/florlateral.png"
         alt=""
-        class="absolute left-0 top-[54%] w-12 sm:w-20 md:w-24 pointer-events-none opacity-60 z-20"
+        class="absolute left-0 top-[54%] w-12 sm:w-20 md:w-24 pointer-events-none opacity-60 scale-x-[-1] z-20"
         id="flor-lado-izq"
     />
     <img
@@ -33,7 +33,7 @@
                 <img
                     src="/imagenes/florlateral.png"
                     alt=""
-                    class="absolute left-[-6%] top-[8%] w-[26%] pointer-events-none scale-x-[-1]"
+                    class="absolute left-[-6%] top-[8%] w-[26%] pointer-events-none"
                     style="z-index: 0;"
                     id="flor-detras-izq"
                 />
@@ -62,12 +62,12 @@
                      La altura se controla en el script con yPercent (ver FOTO_ARRIBA / FOTO_FLOTA):
                      valores MAYORES = foto más abajo (más metida en el sobre) -->
                 <img
-                    src="/imagenes/foto1.png"
+                    src="/imagenes/imagen.png"
                     alt="Foto de los novios"
-                    width="852"
-                    height="1280"
-                    class="absolute w-[50%] object-contain drop-shadow-lg"
-                    style="left: 50%; top: 0; transform: translate(-50%, -13%); z-index: 2;"
+                    width="623"
+                    height="445"
+                    class="absolute w-[74%] object-contain drop-shadow-lg"
+                    style="left: 50%; top: 0; transform: translate(-50%, 14%); z-index: 2;"
                     id="sobre-imagen"
                 />
 
@@ -353,9 +353,9 @@
         let flotado: gsap.core.Tween | null = null;
 
         // 🎯 ALTURA DE LA FOTO (en % de su propia altura, positivo = más abajo)
-        const FOTO_DENTRO = 46; // posición inicial, escondida en el sobre
-        const FOTO_ARRIBA = -13; // posición final tras salir  ← súbelo para bajar la foto
-        const FOTO_FLOTA = -17; // punto alto del flotado suave
+        const FOTO_DENTRO = 100; // posición inicial, escondida en el sobre
+        const FOTO_ARRIBA = 14; // posición final tras salir  ← súbelo para bajar la foto
+        const FOTO_FLOTA = 10; // punto alto del flotado suave
 
         gsap.fromTo(
             "#sobre-imagen",

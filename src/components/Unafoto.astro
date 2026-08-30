@@ -1,0 +1,330 @@
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- 📷 SECCIÓN: UNA SOLA FOTO — lámina enmarcada                -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- Misma idea que Fotos.astro (foto con click para ampliar), pero
+     tratada como una lámina de museo: doble filete dorado, paspartú
+     interior, flores de esquina y un brillo que cruza el cristal.
+     La foto es 1280x960 (horizontal), por eso el marco es 4/3: así
+     no se recorta a los novios. -->
+<section class="relative w-full py-12 sm:py-20 md:py-24 lg:py-32">
+    <div class="max-w-6xl mx-auto px-6 sm:px-6 lg:px-8">
+        <div class="flex justify-center">
+            <div class="relative w-full max-w-[340px]" id="unafoto-wrap">
+                <!-- ── ORNAMENTO SUPERIOR ── -->
+                <div
+                    class="flex items-center gap-3 mb-7 w-full"
+                    id="unafoto-orn-top"
+                >
+                    <div
+                        class="h-px flex-1 bg-gradient-to-r from-transparent to-[#A88C61]/45"
+                    >
+                    </div>
+                    <span class="text-[#A88C61] text-sm opacity-70">✦</span>
+                    <div
+                        class="h-px flex-1 bg-gradient-to-l from-transparent to-[#A88C61]/45"
+                    >
+                    </div>
+                </div>
+
+                <!-- ── MARCO + FOTO ── -->
+                <div class="relative" id="unafoto-marco">
+                    <!-- FILETE DORADO EXTERIOR (respira alrededor del cuadro) -->
+                    <div
+                        class="absolute -inset-[10px] border border-[#A88C61]/45 rounded-[26px] pointer-events-none"
+                    >
+                    </div>
+                    <!-- SEGUNDO FILETE, más tenue: da el efecto de doble hilo -->
+                    <div
+                        class="absolute -inset-[16px] border border-[#A88C61]/20 rounded-[32px] pointer-events-none"
+                    >
+                    </div>
+
+                    <!-- FLOR — esquina superior izquierda -->
+                    <img
+                        src="/imagenes/floradorno.png"
+                        alt=""
+                        class="absolute -top-10 -left-8 w-28 sm:w-32 pointer-events-none z-30"
+                        id="unafoto-flor-izq"
+                    />
+                    <!-- FLOR — esquina inferior derecha (girada) -->
+                    <img
+                        src="/imagenes/floradorno.png"
+                        alt=""
+                        class="absolute -bottom-10 -right-8 w-28 sm:w-32 pointer-events-none z-30"
+                        style="transform: rotate(180deg);"
+                        id="unafoto-flor-der"
+                    />
+
+                    <!-- CUADRO -->
+                    <div
+                        id="unafoto-trigger"
+                        class="group relative w-full aspect-[4/3] rounded-[18px] shadow-2xl overflow-hidden cursor-pointer transition-transform duration-500 hover:-translate-y-1"
+                        role="button"
+                        tabindex="0"
+                        aria-label="Ampliar fotografía"
+                    >
+                        <img
+                            src="/imagenes/foto1.webp"
+                            alt="Oscar Leopoldo y Ynes Esther"
+                            width="1280"
+                            height="960"
+                            loading="lazy"
+                            class="w-full h-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.06]"
+                            id="unafoto-img"
+                        />
+
+                        <!-- Velo cálido: asienta la foto en la paleta de la invitación -->
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-[#5b3b2e]/25 via-transparent to-transparent pointer-events-none"
+                        >
+                        </div>
+
+                        <!-- PASPARTÚ: hilo blanco por dentro del borde -->
+                        <div
+                            class="absolute inset-[9px] border border-white/45 rounded-[10px] pointer-events-none"
+                        >
+                        </div>
+
+                        <!-- BRILLO que cruza el cristal cada cierto tiempo -->
+                        <div
+                            class="absolute inset-0 overflow-hidden pointer-events-none rounded-[18px]"
+                        >
+                            <div class="unafoto-brillo"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ── FIRMA BAJO EL CUADRO ── -->
+                <div class="mt-9 text-center" id="unafoto-firma">
+                    <p
+                        class="font-great-vibes text-[2.4rem] leading-none text-[#BE5266]"
+                    >
+                        Oscar &amp; Ynes
+                    </p>
+                    <!-- Sin fecha: ya aparece más arriba en la invitación.
+                         Queda el ✦ para cerrar la composición. -->
+                    <div class="flex items-center justify-center gap-3 mt-3">
+                        <div class="h-px w-10 bg-[#A88C61]/45"></div>
+                        <span class="text-[#A88C61] text-xs opacity-70">✦</span>
+                        <div class="h-px w-10 bg-[#A88C61]/45"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- 🖼️ MODAL — ids propios para no chocar con Fotos.astro       -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<div
+    id="modalUnafoto"
+    class="fixed inset-0 z-50 hidden items-center justify-center p-5"
+    style="opacity: 0; transition: opacity 0.35s ease; backdrop-filter: blur(12px);"
+>
+    <div
+        class="absolute inset-0 bg-gradient-to-br from-[#fdf8f5] via-[#f6efe9] to-white opacity-[0.97]"
+    >
+    </div>
+
+    <div class="relative max-w-4xl w-full z-10">
+        <button
+            id="btnCerrarUnafoto"
+            class="absolute -top-11 right-0 text-[#A88C61] hover:text-[#BE5266] transition-all duration-300 text-3xl hover:rotate-90"
+            aria-label="Cerrar imagen"
+        >
+            ✕
+        </button>
+        <div class="relative p-[10px] border border-[#A88C61]/40 rounded-lg">
+            <img
+                id="modalImageUnafoto"
+                src=""
+                alt="Fotografía ampliada"
+                class="w-full h-auto max-h-[82vh] object-contain rounded-sm shadow-2xl"
+            />
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Brillo diagonal que recorre el cuadro, como un reflejo sobre el cristal */
+    .unafoto-brillo {
+        position: absolute;
+        top: -25%;
+        left: 0;
+        width: 35%;
+        height: 150%;
+        background: linear-gradient(
+            to right,
+            rgba(255, 255, 255, 0) 0%,
+            rgba(255, 255, 255, 0.42) 50%,
+            rgba(255, 255, 255, 0) 100%
+        );
+        transform: translateX(-160%) skewX(-18deg);
+        animation: unafoto-destello 7s ease-in-out 1.5s infinite;
+    }
+
+    @keyframes unafoto-destello {
+        0% {
+            transform: translateX(-160%) skewX(-18deg);
+        }
+        /* el destello ocupa solo el primer tercio del ciclo: el resto es reposo */
+        35%,
+        100% {
+            transform: translateX(400%) skewX(-18deg);
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .unafoto-brillo {
+            animation: none;
+            opacity: 0;
+        }
+    }
+</style>
+
+<script>
+    import { gsap } from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    document.addEventListener("DOMContentLoaded", () => {
+        // ═══ ENTRADA AL HACER SCROLL ═══
+        const entrada = {
+            trigger: "#unafoto-wrap",
+            start: "top 82%",
+            toggleActions: "play none none reset",
+        };
+
+        gsap.fromTo(
+            "#unafoto-orn-top",
+            { opacity: 0, y: 12 },
+            {
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                ease: "power2.out",
+                scrollTrigger: entrada,
+            },
+        );
+
+        // El cuadro entra con un leve zoom-out: parece que se posa en su sitio
+        gsap.fromTo(
+            "#unafoto-marco",
+            { opacity: 0, y: 45, scale: 1.04 },
+            {
+                opacity: 1,
+                y: 0,
+                scale: 1,
+                duration: 1.3,
+                delay: 0.15,
+                ease: "power3.out",
+                scrollTrigger: entrada,
+            },
+        );
+
+        // Las flores abren desde el centro del marco hacia sus esquinas
+        gsap.fromTo(
+            "#unafoto-flor-izq",
+            { opacity: 0, x: 25, y: 25, scale: 0.85 },
+            {
+                opacity: 1,
+                x: 0,
+                y: 0,
+                scale: 1,
+                duration: 1.2,
+                delay: 0.6,
+                ease: "power2.out",
+                scrollTrigger: entrada,
+            },
+        );
+
+        gsap.fromTo(
+            "#unafoto-flor-der",
+            { opacity: 0, x: -25, y: -25, scale: 0.85, rotation: 180 },
+            {
+                opacity: 1,
+                x: 0,
+                y: 0,
+                scale: 1,
+                rotation: 180,
+                duration: 1.2,
+                delay: 0.75,
+                ease: "power2.out",
+                scrollTrigger: entrada,
+            },
+        );
+
+        gsap.fromTo(
+            "#unafoto-firma",
+            { opacity: 0, y: 18 },
+            {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                delay: 0.9,
+                ease: "power2.out",
+                scrollTrigger: entrada,
+            },
+        );
+
+        // ═══ MODAL ═══
+        const modal = document.getElementById("modalUnafoto");
+        const modalImage = document.getElementById(
+            "modalImageUnafoto",
+        ) as HTMLImageElement | null;
+        const trigger = document.getElementById("unafoto-trigger");
+        const btnCerrar = document.getElementById("btnCerrarUnafoto");
+        if (!modal || !modalImage) return;
+
+        const abrirModal = (src: string) => {
+            modalImage.src = src;
+            modal.classList.remove("hidden");
+            modal.classList.add("flex");
+            document.body.style.overflow = "hidden";
+            requestAnimationFrame(() => {
+                modal.style.opacity = "1";
+            });
+        };
+
+        const cerrarModal = () => {
+            modal.style.opacity = "0";
+            setTimeout(() => {
+                modal.classList.add("hidden");
+                modal.classList.remove("flex");
+                document.body.style.overflow = "auto";
+            }, 350);
+        };
+
+        trigger?.addEventListener("click", () =>
+            abrirModal("/imagenes/foto1.webp"),
+        );
+
+        // el cuadro también responde a teclado: es un botón
+        trigger?.addEventListener("keydown", (e) => {
+            if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                abrirModal("/imagenes/foto1.webp");
+            }
+        });
+
+        btnCerrar?.addEventListener("click", (e) => {
+            e.stopPropagation();
+            cerrarModal();
+        });
+
+        modal.addEventListener("click", (e) => {
+            if (e.target === modal) cerrarModal();
+        });
+
+        modalImage.addEventListener("click", (e) => e.stopPropagation());
+
+        document.addEventListener("keydown", (e) => {
+            // solo cierra si este modal es el que está abierto
+            if (e.key === "Escape" && !modal.classList.contains("hidden")) {
+                cerrarModal();
+            }
+        });
+    });
+</script>
