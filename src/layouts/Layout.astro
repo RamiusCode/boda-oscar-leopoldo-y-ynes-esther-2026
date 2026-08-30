@@ -7,7 +7,7 @@ export interface Props {
 }
 const {
   title,
-  description = "Oscar Leopoldo & Ynes Esther — Sábado 26 de septiembre de 2026. Acompáñanos en nuestro día.",
+  description = "Oscar Leopoldo & Ynés Esther — Sábado 26 de septiembre de 2026. Acompáñanos en nuestro día.",
 } = Astro.props;
 
 // WhatsApp y Facebook exigen URL absoluta en og:image: se arma con `site`
@@ -30,7 +30,7 @@ const ogImage = new URL("/imagenes/miniatura.jpg", Astro.site ?? Astro.url);
 
     <!-- ═══ OPEN GRAPH — miniatura al compartir (WhatsApp, Facebook) ═══ -->
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Oscar Leopoldo & Ynes Esther" />
+    <meta property="og:site_name" content="Oscar Leopoldo & Ynés Esther" />
     <meta property="og:locale" content="es_ES" />
     <meta property="og:url" content={canonical} />
     <meta property="og:title" content={title} />
@@ -41,7 +41,7 @@ const ogImage = new URL("/imagenes/miniatura.jpg", Astro.site ?? Astro.url);
     <meta property="og:image:type" content="image/jpeg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="849" />
-    <meta property="og:image:alt" content="Oscar Leopoldo y Ynes Esther" />
+    <meta property="og:image:alt" content="Oscar Leopoldo y Ynés Esther" />
 
     <!-- ═══ TWITTER / X ═══ -->
     <meta name="twitter:card" content="summary_large_image" />
