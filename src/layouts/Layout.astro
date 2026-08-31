@@ -1,6 +1,9 @@
 ---
 // src/layouts/Layout.astro
 import "../styles/global.css";
+import fs from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 export interface Props {
   title: string;
   description?: string;
@@ -13,14 +16,60 @@ const {
 // WhatsApp y Facebook exigen URL absoluta en og:image: se arma con `site`
 // (definido en astro.config.mjs). Sin eso la miniatura no se muestra.
 const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url);
-// Al cambiar la miniatura hay que SUBIR este número. El archivo conserva el
-// mismo nombre, así que sin ?v=N los scrapers siguen sirviendo la imagen
-// vieja que tienen cacheada.
+// ═══ MINIATURA AL COMPARTIR (WhatsApp, Facebook) ═══
+// La imagen vive en public/, así que Astro no la procesa y hay que declarar a
+// mano su tipo y sus medidas. Para no tener que acordarse cada vez que se
+// reemplaza el archivo, aquí se detectan solas: se busca el primer
+// miniatura.(png|jpg) que exista y se leen las medidas de su cabecera.
+//
+// Al cambiar la imagen SUBIR esta versión. El archivo conserva el nombre, así
+// que sin ?v=N los scrapers siguen sirviendo la que tienen cacheada.
 const MINIATURA_VERSION = 3;
+
+const dirImagenes = fileURLToPath(
+  new URL("../../public/imagenes/", import.meta.url),
+);
+const miniatura = ["miniatura.png", "miniatura.jpg", "miniatura.jpeg"].find(
+  (nombre) => fs.existsSync(path.join(dirImagenes, nombre)),
+);
+if (!miniatura) {
+  throw new Error(
+    "Falta public/imagenes/miniatura.(png|jpg): sin ella no hay vista previa al compartir.",
+  );
+}
+
+const bytes = fs.readFileSync(path.join(dirImagenes, miniatura));
+const medidas = (() => {
+  // PNG: el bloque IHDR trae ancho y alto en los bytes 16 a 24.
+  if (bytes.readUInt32BE(0) === 0x89504e47) {
+    return { ancho: bytes.readUInt32BE(16), alto: bytes.readUInt32BE(20) };
+  }
+  // JPEG: se recorren los marcadores hasta el SOF, que es el que las trae.
+  for (let i = 2; i < bytes.length; ) {
+    if (bytes[i] !== 0xff) {
+      i++;
+      continue;
+    }
+    const marcador = bytes[i + 1];
+    const esSOF =
+      marcador >= 0xc0 &&
+      marcador <= 0xcf &&
+      marcador !== 0xc4 &&
+      marcador !== 0xc8 &&
+      marcador !== 0xcc;
+    if (esSOF) {
+      return { alto: bytes.readUInt16BE(i + 5), ancho: bytes.readUInt16BE(i + 7) };
+    }
+    i += 2 + bytes.readUInt16BE(i + 2);
+  }
+  throw new Error("No se pudieron leer las medidas de " + miniatura);
+})();
+
 const ogImage = new URL(
-  `/imagenes/miniatura.jpg?v=${MINIATURA_VERSION}`,
+  "/imagenes/" + miniatura + "?v=" + MINIATURA_VERSION,
   Astro.site ?? Astro.url,
 );
+const ogImageTipo = miniatura.endsWith(".png") ? "image/png" : "image/jpeg";
 ---
 
 <!doctype html>
@@ -45,9 +94,9 @@ const ogImage = new URL(
     <meta property="og:image" content={ogImage} />
     <!-- og:image:secure_url es el que lee WhatsApp cuando el sitio va por https -->
     <meta property="og:image:secure_url" content={ogImage} />
-    <meta property="og:image:type" content="image/jpeg" />
-    <meta property="og:image:width" content="1527" />
-    <meta property="og:image:height" content="1080" />
+    <meta property="og:image:type" content={ogImageTipo} />
+    <meta property="og:image:width" content={String(medidas.ancho)} />
+    <meta property="og:image:height" content={String(medidas.alto)} />
     <meta property="og:image:alt" content="Oscar Leopoldo y Ynés Esther" />
 
     <!-- ═══ TWITTER / X ═══ -->
